@@ -2,33 +2,28 @@ import ExceptionFactory from './ExceptionFactory.js';
 import Validator from './Validatior.js';
 
 class CarValidator {
-  constructor(name) {
-    this.name = name;
-  }
-
-  blank() {
-    if (Validator.isBlank(this.name)) {
+  static blank(name) {
+    if (Validator.isBlank(name)) {
       ExceptionFactory.blank();
     }
-    return this;
   }
 
-  length() {
-    if (Validator.isLong(this.name, 5)) {
+  static length(name) {
+    if (Validator.isLong(name, 5)) {
       ExceptionFactory.long();
     }
-    return this;
   }
 
-  symbol() {
-    if (Validator.isSymbol(this.name)) {
+  static symbol(name) {
+    if (Validator.isSymbol(name)) {
       ExceptionFactory.symbol();
     }
-    return this;
   }
 
-  validate() {
-    this.blank().length().symbol();
+  static validate(name) {
+    this.blank(name);
+    this.length(name);
+    this.symbol(name);
   }
 }
 export default CarValidator;

@@ -2,33 +2,28 @@ import ExceptionFactory from './ExceptionFactory.js';
 import Validator from './Validatior.js';
 
 class LapValidator {
-  constructor(lap) {
-    this.lap = lap;
-  }
-
-  blank() {
-    if (Validator.isBlank(this.lap)) {
+  static blank(lap) {
+    if (Validator.isBlank(lap)) {
       ExceptionFactory.blank();
     }
-    return this;
   }
 
-  num() {
-    if (!Validator.isConvertNumber(this.lap)) {
+  static num(lap) {
+    if (!Validator.isConvertNumber(lap)) {
       ExceptionFactory.num();
     }
-    return this;
   }
 
-  negative() {
-    if (Validator.isNegative(this.lap)) {
+  static negative(lap) {
+    if (Validator.isNegative(lap)) {
       ExceptionFactory.negative();
     }
-    return this;
   }
 
-  lapValidate() {
-    this.blank().num().negative();
+  static validate(lap) {
+    this.blank(lap);
+    this.num(lap);
+    this.negative(lap);
   }
 }
 export default LapValidator;
