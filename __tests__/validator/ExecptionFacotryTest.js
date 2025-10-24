@@ -1,4 +1,4 @@
-import ExceptionFactory from '../../src/domain/validator/ExceptionFactory.js';
+import ExceptionFactory from '../../src/validator/ExceptionFactory.js';
 import ERROR_MESSAGES from '../../src/constants/errorMessages.js';
 
 describe('ExceptionFactory instance Test', () => {
