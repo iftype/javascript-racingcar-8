@@ -1,4 +1,4 @@
-import ExceptionFactory from '../../validator/ExceptionFactory';
+import ExceptionFactory from '../validator/ExceptionFactory';
 
 class MoveStrategy {
   constructor() {

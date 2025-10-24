@@ -1,7 +1,7 @@
 import ExceptionFactory from './ExceptionFactory.js';
 import Validator from './Validatior.js';
 
-class LapValidator {
+class CountValidator {
   static blank(lap) {
     if (Validator.isBlank(lap)) {
       ExceptionFactory.blank();
@@ -26,4 +26,4 @@ class LapValidator {
     this.negative(lap);
   }
 }
-export default LapValidator;
+export default CountValidator;

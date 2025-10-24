@@ -1,4 +1,4 @@
-import ERROR_MESSAGES from '../constants/errorMessages.js';
+import ERROR_MESSAGES from '../../constants/errorMessages.js';
 
 class ExceptionFactory {
   constructor() {
@@ -37,6 +37,10 @@ class ExceptionFactory {
 
   static abstractMethod() {
     throw new Error(ERROR_MESSAGES.ABSTRACT_METHOD);
+  }
+
+  static input() {
+    throw new Error(ERROR_MESSAGES.INPUT);
   }
 }
 export default ExceptionFactory;

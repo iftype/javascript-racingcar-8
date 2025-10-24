@@ -14,7 +14,7 @@ class Input {
 
   static async lapCount() {
     try {
-      const lap = await Console.readLineAsync(INFO_MESSAGES.LAP);
+      const lap = await Console.readLineAsync(INFO_MESSAGES.COUNT);
       return lap;
     } catch (error) {
       throw new Error(ERROR_MESSAGES.INPUT);
