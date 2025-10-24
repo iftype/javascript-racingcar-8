@@ -21,9 +21,6 @@
     "jest": "^30.1.2",
     "prettier": "^3.6.2"
   },
-  "dependencies": {
-    "@woowacourse/mission-utils": "^2.2.0"
-  },
   "jest": {
     "transform": {
       "\\.js$": "babel-jest"
@@ -37,5 +34,8 @@
   "engines": {
     "npm": ">=10.8.2",
     "node": ">=22.19.0"
+  },
+  "dependencies": {
+    "@woowacourse/mission-utils": "^2.2.0"
   }
 }

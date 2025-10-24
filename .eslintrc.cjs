@@ -30,5 +30,12 @@ module.exports = {
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
+    'lines-between-class-members': [
+      'error',
+      'always',
+      {
+        exceptAfterSingleLine: true,
+      },
+    ],
   },
 };
