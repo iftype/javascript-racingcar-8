@@ -7,5 +7,6 @@ const ERROR_MESSAGES = {
   SYMBOL: '이름은 한글, 영어, 숫자만 가능합니다.',
   NUM: '입력 값이 숫자여야 합니다',
   NEGATIVE: '입력 값이 음수입니다',
+  INPUT: '입력 중 문제가 생겼습니다',
 };
 export default ERROR_MESSAGES;
