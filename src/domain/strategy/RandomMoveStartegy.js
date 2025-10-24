@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { MIN_RANGE, MAX_RANGE, MAX_NAME_LENGTH } from '../../constants/setting';
+import { MIN_RANGE, MAX_RANGE, MAX_NAME_LENGTH } from '../../constants/setting.js';
 
 class RandomMoveStrategy {
   static move() {
