@@ -25,7 +25,7 @@ module.exports = {
     'no-var': 'error',
     'prefer-const': 'error',
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['acc', 'e'] }],
-    'class-methods-use-this': 'warn',
+    'class-methods-use-this': 'off',
     'no-console': 'warn',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'import/no-unresolved': 'off',

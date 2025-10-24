@@ -30,5 +30,13 @@ class ExceptionFactory {
   static negative() {
     throw new Error(ERROR_MESSAGES.NEGATIVE);
   }
+
+  static abstract() {
+    throw new Error(ERROR_MESSAGES.ABSTRACT);
+  }
+
+  static abstractMethod() {
+    throw new Error(ERROR_MESSAGES.ABSTRACT_METHOD);
+  }
 }
 export default ExceptionFactory;
