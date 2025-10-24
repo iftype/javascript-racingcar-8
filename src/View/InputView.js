@@ -2,23 +2,23 @@ import { Console } from '@woowacourse/mission-utils';
 import INFO_MESSAGES from '../constants/infoMessages.js';
 import ERROR_MESSAGES from '../constants/errorMessages.js';
 
-class Input {
-  static async carName() {
+class InputView {
+  async carName() {
     try {
-      const name = await Console.readLineAsync(INFO_MESSAGES.NAME);
-      return name;
+      this.userInputName = await Console.readLineAsync(INFO_MESSAGES.NAME);
+      return this.userInputName;
     } catch (error) {
       throw new Error(ERROR_MESSAGES.INPUT);
     }
   }
 
-  static async lapCount() {
+  async rounds() {
     try {
-      const lap = await Console.readLineAsync(INFO_MESSAGES.COUNT);
+      const lap = await Console.readLineAsync(INFO_MESSAGES.ROUNDS);
       return lap;
     } catch (error) {
       throw new Error(ERROR_MESSAGES.INPUT);
     }
   }
 }
-export default Input;
+export default InputView;
