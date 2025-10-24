@@ -1,8 +1,10 @@
-import ExceptionFactory from '../validator/ExceptionFactory';
+import ExceptionFactory from '../../validator/ExceptionFactory.js';
 
 class MoveStrategy {
   constructor() {
-    ExceptionFactory.abstract();
+    if (new.target === ExceptionFactory) {
+      ExceptionFactory.abstract();
+    }
   }
 
   move() {
