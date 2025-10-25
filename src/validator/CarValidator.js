@@ -9,7 +9,7 @@ class CarValidator {
   }
 
   static length(name) {
-    if (Validator.isLong(name, 5)) {
+    if (Validator.isLongerThan(name, 5)) {
       ExceptionFactory.long();
     }
   }

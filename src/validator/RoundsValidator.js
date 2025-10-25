@@ -14,16 +14,16 @@ class RoundsValidator {
     }
   }
 
-  static negative(lap) {
-    if (Validator.isNegative(lap)) {
-      ExceptionFactory.negative();
+  static positive(lap) {
+    if (!Validator.isPositive(lap, 2)) {
+      ExceptionFactory.positive();
     }
   }
 
   static validate(lap) {
     this.blank(lap);
     this.num(lap);
-    this.negative(lap);
+    this.positive(lap);
   }
 }
 export default RoundsValidator;

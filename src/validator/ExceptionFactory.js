@@ -15,6 +15,10 @@ class ExceptionFactory {
     throw new Error(ERROR_MESSAGES.LONG);
   }
 
+  static greater() {
+    throw new Error(ERROR_MESSAGES.GREATER);
+  }
+
   static duplicate() {
     throw new Error(ERROR_MESSAGES.DUPLICATE);
   }
@@ -25,6 +29,10 @@ class ExceptionFactory {
 
   static num() {
     throw new Error(ERROR_MESSAGES.NUM);
+  }
+
+  static positive() {
+    throw new Error(ERROR_MESSAGES.POSITIVE);
   }
 
   static negative() {

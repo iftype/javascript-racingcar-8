@@ -3,12 +3,20 @@ class Validator {
     return str.trim() === '';
   }
 
-  static isLong(str, max) {
+  static isLongerThan(str, max) {
     return str.length > max;
+  }
+
+  static isGreaterThan(num, target) {
+    return num > target;
   }
 
   static isSymbol(str) {
     return !/^[ㄱ-ㅎ가-힣a-zA-Z0-9]+$/.test(str);
+  }
+
+  static isPositive(num) {
+    return num > 0;
   }
 
   static isNegative(num) {
