@@ -5,13 +5,12 @@ import RoundsValidator from '../validator/RoundsValidator.js';
 
 class RacingService {
   run(nameString, rounds) {
-    const race = new Race();
     const names = nameString.split(',').map((name) => name.trim());
     CarValidator.validate(names);
     RoundsValidator.validate(rounds);
 
     const carList = CarFactory.createCars(names);
-    return race.start(carList, rounds);
+    return Race.start(carList, rounds);
   }
 }
 export default RacingService;

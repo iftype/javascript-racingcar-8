@@ -1,15 +1,15 @@
 class Race {
-  start(carList, rounds) {
+  static start(carList, rounds) {
     const logs = [];
     for (let round = 0; round < rounds; round += 1) {
-      const roundResult = this.racing(carList);
+      const roundResult = Race.racing(carList);
       logs.push(roundResult);
     }
-    const winners = this.findWinner(logs);
+    const winners = Race.findWinner(logs);
     return { logs, winners };
   }
 
-  racing(carList) {
+  static racing(carList) {
     const roundResult = [];
     carList.forEach((car) => {
       car.move();
@@ -19,7 +19,7 @@ class Race {
     return roundResult;
   }
 
-  findWinner(logs) {
+  static findWinner(logs) {
     const lastLog = logs[logs.length - 1];
 
     const distances = lastLog.map((log) => log.distance);
