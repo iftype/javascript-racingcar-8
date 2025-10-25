@@ -7,7 +7,7 @@ describe('ExceptionFactory instance Test', () => {
   });
 });
 
-describe('ExceptionFactory method test', () => {
+describe('ExceptionFactory 테스트', () => {
   const cases = [
     [ExceptionFactory.blank.name, ExceptionFactory.blank, ERROR_MESSAGES.BLANK],
     [ExceptionFactory.long.name, ExceptionFactory.long, ERROR_MESSAGES.LONG],
@@ -16,7 +16,7 @@ describe('ExceptionFactory method test', () => {
     [ExceptionFactory.num.name, ExceptionFactory.num, ERROR_MESSAGES.NUM],
     [ExceptionFactory.negative.name, ExceptionFactory.negative, ERROR_MESSAGES.NEGATIVE],
   ];
-  it.each(cases)('%s 테스트 시작,%s는 %s를 포함해야합니다', (_, method, expected) => {
+  it.each(cases)('%s 테스트 시작', (_, method, expected) => {
     expect(method).toThrow(expected);
   });
 });
