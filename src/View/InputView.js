@@ -3,7 +3,7 @@ import INFO_MESSAGES from '../constants/infoMessages.js';
 import ERROR_MESSAGES from '../constants/errorMessages.js';
 
 class InputView {
-  async carName() {
+  async carNames() {
     try {
       this.userInputName = await Console.readLineAsync(INFO_MESSAGES.NAME);
       return this.userInputName;

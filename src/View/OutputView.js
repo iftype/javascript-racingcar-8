@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import INFO_MESSAGES from '../constants/infoMessages.js';
 
 class OutputView {
-  printLogs(logs) {
+  logs(logs) {
     Console.print(INFO_MESSAGES.RESULT);
     logs.forEach((round) => {
       round.forEach((log) => {
@@ -12,7 +12,7 @@ class OutputView {
     });
   }
 
-  printWinnerList(winnerList) {
+  winners(winnerList) {
     Console.print(`${INFO_MESSAGES.WINNER}${winnerList.join(INFO_MESSAGES.DELIM)}`);
   }
 }

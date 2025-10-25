@@ -1,22 +1,17 @@
-import RacingService from '../service/RacingService.js';
-import InputView from '../view/InputView.js';
-import OutputView from '../view/OutputView.js';
-
 class RacingController {
-  constructor() {
-    this.inputView = new InputView();
-    this.racingService = new RacingService();
-    this.outPutView = new OutputView();
+  constructor(racingService, racingView) {
+    this.racingService = racingService;
+    this.racingView = racingView;
   }
 
   async play() {
     try {
-      const nameString = await this.inputView.carName();
-      const rounds = await this.inputView.rounds();
+      const nameString = await this.racingView.inputCarNames();
+      const rounds = await this.racingView.inputCounts();
 
       const { logs, winnerList } = this.racingService.run(nameString, rounds);
-      this.outPutView.printLogs(logs);
-      this.outPutView.printWinnerList(winnerList);
+      this.racingView.printLogs(logs);
+      this.racingView.printWinners(winnerList);
     } catch (err) {
       throw new Error(`[ERROR] ${err.message}`);
     }

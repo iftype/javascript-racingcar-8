@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import RandomMoveStrategy from './strategy/RandomMoveStartegy.js';
+import RandomMoveStrategy from './strategy/RandomMoveStrategy.js';
 
 class CarFactory {
   static createCars(nameList) {
