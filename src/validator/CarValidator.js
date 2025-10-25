@@ -20,14 +20,14 @@ class CarValidator {
     }
   }
 
-  static duplicate(nameList) {
-    const deleteDuplicate = new Set(nameList);
-    if (deleteDuplicate.size !== nameList.length) ExceptionFactory.duplicate();
+  static duplicate(names) {
+    const deleteDuplicate = new Set(names);
+    if (deleteDuplicate.size !== names.length) ExceptionFactory.duplicate();
   }
 
-  static validate(nameList) {
-    this.duplicate(nameList);
-    nameList.forEach((name) => {
+  static validate(names) {
+    this.duplicate(names);
+    names.forEach((name) => {
       this.blank(name);
       this.length(name);
       this.symbol(name);

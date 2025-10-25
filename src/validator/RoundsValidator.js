@@ -2,28 +2,28 @@ import ExceptionFactory from './ExceptionFactory.js';
 import Validator from './Validator.js';
 
 class RoundsValidator {
-  static blank(lap) {
-    if (Validator.isBlank(lap)) {
+  static blank(rounds) {
+    if (Validator.isBlank(rounds)) {
       ExceptionFactory.blank();
     }
   }
 
-  static num(lap) {
-    if (!Validator.isConvertNumber(lap)) {
+  static num(rounds) {
+    if (!Validator.isConvertNumber(rounds)) {
       ExceptionFactory.num();
     }
   }
 
-  static positive(lap) {
-    if (!Validator.isPositive(lap, 2)) {
+  static positive(rounds) {
+    if (!Validator.isPositive(rounds, 2)) {
       ExceptionFactory.positive();
     }
   }
 
-  static validate(lap) {
-    this.blank(lap);
-    this.num(lap);
-    this.positive(lap);
+  static validate(rounds) {
+    this.blank(rounds);
+    this.num(rounds);
+    this.positive(rounds);
   }
 }
 export default RoundsValidator;

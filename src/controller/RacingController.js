@@ -9,9 +9,9 @@ class RacingController {
       const nameString = await this.racingView.inputCarNames();
       const rounds = await this.racingView.inputCounts();
 
-      const { logs, winnerList } = this.racingService.run(nameString, rounds);
+      const { logs, winners } = this.racingService.run(nameString, rounds);
       this.racingView.printLogs(logs);
-      this.racingView.printWinners(winnerList);
+      this.racingView.printWinners(winners);
     } catch (err) {
       throw new Error(`[ERROR] ${err.message}`);
     }

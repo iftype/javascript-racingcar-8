@@ -5,8 +5,8 @@ class Race {
       const roundResult = this.racing(carList);
       logs.push(roundResult);
     }
-    const winnerList = this.findWinner(logs);
-    return { logs, winnerList };
+    const winners = this.findWinner(logs);
+    return { logs, winners };
   }
 
   racing(carList) {
