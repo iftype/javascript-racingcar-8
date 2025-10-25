@@ -1,5 +1,5 @@
 import ExceptionFactory from './ExceptionFactory.js';
-import Validator from './Validatior.js';
+import Validator from './Validator.js';
 
 class CarValidator {
   static blank(name) {
