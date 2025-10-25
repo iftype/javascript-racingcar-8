@@ -1,12 +1,12 @@
 import RacingService from '../service/RacingService.js';
 import InputView from '../view/InputView.js';
-import OutPutView from '../view/OutputView.js';
+import OutputView from '../view/OutputView.js';
 
 class RacingController {
   constructor() {
     this.inputView = new InputView();
     this.racingService = new RacingService();
-    this.outPutView = new OutPutView();
+    this.outPutView = new OutputView();
   }
 
   async play() {
