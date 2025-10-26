@@ -1,30 +1,31 @@
 import Race from '../../src/domain/Race.js';
 
 describe('Race 테스트 ', () => {
+  const testCars = [
+    {
+      name: 'a',
+      distance: 0,
+      move() {
+        this.distance += 1;
+      },
+      getData() {
+        return { name: this.name, distance: this.distance };
+      },
+    },
+    {
+      name: 'b',
+      distance: 0,
+      move() {
+        this.distance += 1;
+      },
+      getData() {
+        return { name: this.name, distance: this.distance };
+      },
+    },
+  ];
+  const rounds = 2;
   test('move 성공 테스트', () => {
-    const testCars = [
-      {
-        name: 'a',
-        distance: 0,
-        move() {
-          this.distance += 1;
-        },
-        getData() {
-          return { name: this.name, distance: this.distance };
-        },
-      },
-      {
-        name: 'b',
-        distance: 0,
-        move() {
-          this.distance += 1;
-        },
-        getData() {
-          return { name: this.name, distance: this.distance };
-        },
-      },
-    ];
-    const rounds = 2;
+    const race = new Race(testCars, rounds);
     const result = {
       logs: [
         [
@@ -38,6 +39,6 @@ describe('Race 테스트 ', () => {
       ],
       winners: ['a', 'b'],
     };
-    expect(Race.start(testCars, rounds)).toEqual(result);
+    expect(race.start(testCars, rounds)).toEqual(result);
   });
 });

@@ -1,15 +1,14 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import RandomMoveStrategy from '../../../src/domain/strategy/RandomMoveStrategy.js';
 
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
-
 describe('RandomMoveStrategy 테스트', () => {
+  const mockRandoms = (numbers) => {
+    MissionUtils.Random.pickNumberInRange = jest.fn();
+
+    numbers.reduce((acc, number) => {
+      return acc.mockReturnValueOnce(number);
+    }, MissionUtils.Random.pickNumberInRange);
+  };
   const strategy = new RandomMoveStrategy();
 
   test('move 성공 테스트', () => {

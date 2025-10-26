@@ -1,9 +1,8 @@
-import Race from '../domain/Race.js';
-
 class RacingService {
-  constructor(carFactory, racingValidator) {
+  constructor(carFactory, racingValidator, Race) {
     this.carFactory = carFactory;
     this.racingValidator = racingValidator;
+    this.Race = Race;
   }
 
   run(nameString, rounds) {
@@ -11,7 +10,8 @@ class RacingService {
     this.racingValidator.validate(names, rounds);
 
     const cars = this.carFactory.createCars(names);
-    return Race.start(cars, rounds);
+    const race = new this.Race(cars, rounds);
+    return race.start();
   }
 }
 export default RacingService;

@@ -1,26 +1,27 @@
 class Race {
-  static start(carList, rounds) {
-    const logs = [];
-    for (let round = 0; round < rounds; round += 1) {
-      const roundResult = Race.racing(carList);
-      logs.push(roundResult);
+  constructor(cars, rounds) {
+    this.cars = cars;
+    this.rounds = rounds;
+    this.logs = [];
+  }
+
+  start() {
+    for (let round = 0; round < this.rounds; round += 1) {
+      this.logs.push(this.racing());
     }
-    const winners = Race.findWinner(logs);
-    return { logs, winners };
+    const winners = this.findWinner(this.logs);
+    return { logs: this.logs, winners };
   }
 
-  static racing(carList) {
-    const roundResult = [];
-    carList.forEach((car) => {
+  racing() {
+    return this.cars.map((car) => {
       car.move();
-      const { name, distance } = car.getData();
-      roundResult.push({ name, distance });
+      return car.getData();
     });
-    return roundResult;
   }
 
-  static findWinner(logs) {
-    const lastLog = logs[logs.length - 1];
+  findWinner() {
+    const lastLog = this.logs[this.logs.length - 1];
 
     const distances = lastLog.map((log) => log.distance);
     const winnerDistance = Math.max(...distances);

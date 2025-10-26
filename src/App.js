@@ -2,15 +2,17 @@ import InputView from './view/InputView.js';
 import OutputView from './view/outputView.js';
 import RacingView from './view/RacingView.js';
 
-import RandomMoveStrategy from './domain/strategy/RandomMoveStrategy.js';
-import CarFactory from './domain/CarFactory.js';
-import RacingService from './service/RacingService.js';
-
-import RacingController from './controller/RacingController.js';
 import Validator from './utils/Validator.js';
 import CarValidator from './validator/CarValidator.js';
 import RoundsValidator from './validator/RoundsValidator.js';
 import RacingValidator from './validator/RacingValidator.js';
+
+import RandomMoveStrategy from './domain/strategy/RandomMoveStrategy.js';
+import CarFactory from './domain/CarFactory.js';
+import Race from './domain/Race.js';
+import RacingService from './service/RacingService.js';
+
+import RacingController from './controller/RacingController.js';
 
 class App {
   async run() {
@@ -25,7 +27,7 @@ class App {
 
     const strategy = new RandomMoveStrategy();
     const carFactory = new CarFactory(strategy);
-    const racingService = new RacingService(carFactory, racingValidator);
+    const racingService = new RacingService(carFactory, racingValidator, Race);
 
     const racingController = new RacingController(racingService, racingView);
 
