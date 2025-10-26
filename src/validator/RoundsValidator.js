@@ -1,5 +1,5 @@
 import ExceptionFactory from './ExceptionFactory.js';
-import Validator from './Validator.js';
+import Validator from '../utils/Validator.js';
 
 class RoundsValidator {
   static blank(rounds) {

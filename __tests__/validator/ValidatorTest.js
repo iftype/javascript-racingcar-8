@@ -1,4 +1,4 @@
-import Validator from '../../src/validator/Validator';
+import Validator from '../../src/utils/Validator.js';
 
 describe('Validator 검사', () => {
   test.each([
