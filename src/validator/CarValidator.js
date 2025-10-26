@@ -1,31 +1,36 @@
-import ExceptionFactory from './ExceptionFactory.js';
-import Validator from '../utils/Validator.js';
+import ERROR_MESSAGES from '../constants/errorMessages.js';
 
 class CarValidator {
-  static blank(name) {
-    if (Validator.isBlank(name)) {
-      ExceptionFactory.blank();
+  constructor(validator) {
+    this.validator = validator;
+  }
+
+  blank(name) {
+    if (this.validator.isBlank(name)) {
+      throw new Error(ERROR_MESSAGES.BLANK);
     }
   }
 
-  static length(name) {
-    if (Validator.isLongerThan(name, 5)) {
-      ExceptionFactory.long();
+  length(name) {
+    if (this.validator.isLongerThan(name, 5)) {
+      throw new Error(ERROR_MESSAGES.LONG);
     }
   }
 
-  static symbol(name) {
-    if (Validator.isSymbol(name)) {
-      ExceptionFactory.symbol();
+  symbol(name) {
+    if (this.validator.isSymbol(name)) {
+      throw new Error(ERROR_MESSAGES.SYMBOL);
     }
   }
 
-  static duplicate(names) {
+  duplicate(names) {
     const deleteDuplicate = new Set(names);
-    if (deleteDuplicate.size !== names.length) ExceptionFactory.duplicate();
+    if (deleteDuplicate.size !== names.length) {
+      throw new Error(ERROR_MESSAGES.DUPLICATE);
+    }
   }
 
-  static validate(names) {
+  validate(names) {
     this.duplicate(names);
     names.forEach((name) => {
       this.blank(name);

@@ -1,29 +1,29 @@
 class Validator {
-  static isBlank(str) {
+  isBlank(str) {
     return str.trim() === '';
   }
 
-  static isLongerThan(str, max) {
+  isLongerThan(str, max) {
     return str.length > max;
   }
 
-  static isGreaterThan(num, target) {
+  isGreaterThan(num, target) {
     return num > target;
   }
 
-  static isSymbol(str) {
+  isSymbol(str) {
     return !/^[ㄱ-ㅎ가-힣a-zA-Z0-9]+$/.test(str);
   }
 
-  static isPositive(num) {
+  isPositive(num) {
     return num > 0;
   }
 
-  static isNegative(num) {
+  isNegative(num) {
     return num < 0;
   }
 
-  static isConvertNumber(param) {
+  isConvertNumber(param) {
     if (param === null || typeof param === 'undefined') {
       return false;
     }

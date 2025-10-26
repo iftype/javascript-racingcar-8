@@ -1,16 +1,16 @@
 import Race from '../domain/Race.js';
-import CarValidator from '../validator/CarValidator.js';
-import RoundsValidator from '../validator/RoundsValidator.js';
 
 class RacingService {
-  constructor(carFactory) {
+  constructor(carFactory, carValidator, roundsValidator) {
     this.carFactory = carFactory;
+    this.carValidator = carValidator;
+    this.roundsValidator = roundsValidator;
   }
 
   run(nameString, rounds) {
     const names = nameString.split(',').map((name) => name.trim());
-    CarValidator.validate(names);
-    RoundsValidator.validate(rounds);
+    this.carValidator.validate(names);
+    this.roundsValidator.validate(rounds);
 
     const carList = this.carFactory.createCars(names);
     return Race.start(carList, rounds);

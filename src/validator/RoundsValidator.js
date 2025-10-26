@@ -1,26 +1,29 @@
-import ExceptionFactory from './ExceptionFactory.js';
-import Validator from '../utils/Validator.js';
+import ERROR_MESSAGES from '../constants/errorMessages.js';
 
 class RoundsValidator {
-  static blank(rounds) {
-    if (Validator.isBlank(rounds)) {
-      ExceptionFactory.blank();
+  constructor(validator) {
+    this.validator = validator;
+  }
+
+  blank(rounds) {
+    if (this.validator.isBlank(rounds)) {
+      throw new Error(ERROR_MESSAGES.BLANK);
     }
   }
 
-  static num(rounds) {
-    if (!Validator.isConvertNumber(rounds)) {
-      ExceptionFactory.num();
+  num(rounds) {
+    if (!this.validator.isConvertNumber(rounds)) {
+      throw new Error(ERROR_MESSAGES.NUM);
     }
   }
 
-  static positive(rounds) {
-    if (!Validator.isPositive(rounds, 2)) {
-      ExceptionFactory.positive();
+  positive(rounds) {
+    if (!this.validator.isPositive(rounds, 2)) {
+      throw new Error(ERROR_MESSAGES.POSITIVE);
     }
   }
 
-  static validate(rounds) {
+  validate(rounds) {
     this.blank(rounds);
     this.num(rounds);
     this.positive(rounds);
