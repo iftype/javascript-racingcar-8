@@ -1,6 +1,7 @@
 import Validator from '../../src/utils/Validator.js';
 
 describe('Validator 검사', () => {
+  let validator;
   beforeAll(() => {
     validator = new Validator();
   });
