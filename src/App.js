@@ -10,6 +10,7 @@ import RacingController from './controller/RacingController.js';
 import Validator from './utils/Validator.js';
 import CarValidator from './validator/CarValidator.js';
 import RoundsValidator from './validator/RoundsValidator.js';
+import RacingValidator from './validator/RacingValidator.js';
 
 class App {
   async run() {
@@ -20,9 +21,11 @@ class App {
     const validator = new Validator();
     const carValidator = new CarValidator(validator);
     const roundsValidator = new RoundsValidator(validator);
+    const racingValidator = new RacingValidator(carValidator, roundsValidator);
+
     const strategy = new RandomMoveStrategy();
     const carFactory = new CarFactory(strategy);
-    const racingService = new RacingService(carFactory, carValidator, roundsValidator);
+    const racingService = new RacingService(carFactory, racingValidator);
 
     const racingController = new RacingController(racingService, racingView);
 
