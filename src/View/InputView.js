@@ -5,8 +5,9 @@ import ERROR_MESSAGES from '../constants/errorMessages.js';
 class InputView {
   async carNames() {
     try {
-      this.userInputName = await Console.readLineAsync(INFO_MESSAGES.NAME);
-      return this.userInputName;
+      const userInput = await Console.readLineAsync(INFO_MESSAGES.NAME);
+      const names = userInput.split(',').map((name) => name.trim());
+      return names;
     } catch (error) {
       throw new Error(ERROR_MESSAGES.INPUT);
     }

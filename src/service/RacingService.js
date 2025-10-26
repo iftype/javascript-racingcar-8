@@ -5,10 +5,8 @@ class RacingService {
     this.Race = Race;
   }
 
-  run(nameString, rounds) {
-    const names = nameString.split(',').map((name) => name.trim());
+  run(names, rounds) {
     this.racingValidator.validate(names, rounds);
-
     const cars = this.carFactory.createCars(names);
     const race = new this.Race(cars, rounds);
     return race.start();
