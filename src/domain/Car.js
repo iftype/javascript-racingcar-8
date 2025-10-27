@@ -7,7 +7,7 @@ class Car {
 
   constructor(name, strategy) {
     if (!(strategy instanceof MoveStrategy)) {
-      throw Error('잘못된 전략 조건입니다');
+      throw new Error('잘못된 전략 조건입니다');
     }
     this.#name = name;
     this.#strategy = strategy;
