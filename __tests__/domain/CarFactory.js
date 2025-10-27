@@ -1,6 +1,6 @@
 import Car from '../../src/domain/Car';
-import CarFactory from '../../src/domain/CarFactory';
-import MoveStrategy from '../../src/domain/strategy/MoveStrategy';
+import CarFactory from '../../src/domain/CarFactory.js';
+import MoveStrategy from '../../src/domain/strategy/MoveStrategy.js';
 
 class MockStrategy extends MoveStrategy {
   constructor() {

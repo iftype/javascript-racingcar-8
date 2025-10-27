@@ -1,4 +1,4 @@
-import RacingController from '../../src/controller/RacingController';
+import RacingController from '../../src/controller/RacingController.js';
 import {
   MOCK_RACE_RESULT,
   TEST_INPUT_NAMES,
