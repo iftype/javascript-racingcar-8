@@ -13,7 +13,7 @@ describe('CarFactory 검사', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockStrategy = new MockStrategy();
-    mockFactory = new CarFactory(mockStrategy);
+    mockFactory = new CarFactory({ strategy: mockStrategy });
   });
 
   test('생성되는지 테스트', () => {

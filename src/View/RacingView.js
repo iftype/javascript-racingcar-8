@@ -1,5 +1,5 @@
 class RacingView {
-  constructor(inputView, outputView) {
+  constructor({ inputView, outputView }) {
     this.inputView = inputView;
     this.outputView = outputView;
   }

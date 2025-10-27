@@ -19,7 +19,11 @@ describe('RacingService 유닛테스트', () => {
     MockRaceClass = jest.fn().mockImplementation(() => {
       return { start: jest.fn().mockReturnValue(MOCK_RACE_RESULT) };
     });
-    service = new RacingService(mockFactory, mockValidator, MockRaceClass);
+    service = new RacingService({
+      carFactory: mockFactory,
+      racingValidator: mockValidator,
+      Race: MockRaceClass,
+    });
   });
 
   test('호출 결과 테스트', () => {

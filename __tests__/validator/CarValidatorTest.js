@@ -11,17 +11,11 @@ describe('CarValidator 검사', () => {
       isLongerThan: jest.fn(),
       isSymbol: jest.fn(),
     };
-    carValidator = new CarValidator(mockValidator);
-    jest.clearAllMocks();
+    carValidator = new CarValidator({ validator: mockValidator });
   });
 
   describe('에러 던지는지 검사', () => {
-    test.each([
-      [
-        ['a', 'a', 'b'],
-        ['a', 'a'],
-      ],
-    ])('duplicate 입력: %s ,', (names) => {
+    test.each([[['a', 'a', 'b']], [['a', 'a']]])('duplicate 입력: %s ,', (names) => {
       expect(() => carValidator.duplicate(names)).toThrow(ERROR_MESSAGES.DUPLICATE);
     });
     test.each(['', ' '])('blank 입력: %s ,', (name) => {
@@ -39,12 +33,7 @@ describe('CarValidator 검사', () => {
   });
 
   describe('통과하는지검사', () => {
-    test.each([
-      [
-        ['a', 'ab', 'b'],
-        ['a', 'c'],
-      ],
-    ])('duplicate 입력: %s ,', (names) => {
+    test.each([[['a', 'ab', 'b']], [['a', 'c']]])('duplicate 입력: %s ,', (names) => {
       expect(() => carValidator.duplicate(names)).not.toThrow();
     });
     test.each(['ifytpe'])('blank 입력: %s ,', (name) => {

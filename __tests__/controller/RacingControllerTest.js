@@ -24,7 +24,7 @@ describe('RacingController 테스트', () => {
     mockService = {
       run: jest.fn().mockReturnValue(MOCK_RACE_RESULT),
     };
-    controller = new RacingController(mockService, mockView);
+    controller = new RacingController({ racingService: mockService, racingView: mockView });
   });
 
   test('컨트롤러는 반환값 확인X 전달만 체크', async () => {

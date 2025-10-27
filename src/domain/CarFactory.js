@@ -3,7 +3,7 @@ import Car from './Car.js';
 class CarFactory {
   #strategy;
 
-  constructor(strategy) {
+  constructor({ strategy }) {
     this.#strategy = strategy;
   }
 

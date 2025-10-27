@@ -2,7 +2,7 @@ import { ERROR_MESSAGES } from '../constants/messages.js';
 import { MAX_LENGTH } from '../constants/setting.js';
 
 class CarValidator {
-  constructor(validator) {
+  constructor({ validator }) {
     this.validator = validator;
   }
 

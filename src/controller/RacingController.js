@@ -2,7 +2,7 @@ class RacingController {
   #racingService;
   #racingView;
 
-  constructor(racingService, racingView) {
+  constructor({ racingService, racingView }) {
     this.#racingService = racingService;
     this.#racingView = racingView;
   }

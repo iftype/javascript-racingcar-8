@@ -1,5 +1,5 @@
 class RacingService {
-  constructor(carFactory, racingValidator, Race) {
+  constructor({ carFactory, racingValidator, Race }) {
     this.carFactory = carFactory;
     this.racingValidator = racingValidator;
     this.Race = Race;

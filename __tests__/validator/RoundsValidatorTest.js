@@ -11,8 +11,7 @@ describe('RoundsValidator 검사', () => {
       isConvertNumber: jest.fn(),
       isPositive: jest.fn(),
     };
-    roundsValidator = new RoundsValidator(mockValidator);
-    jest.clearAllMocks();
+    roundsValidator = new RoundsValidator({ validator: mockValidator });
   });
 
   describe('에러 던지는지 검사', () => {

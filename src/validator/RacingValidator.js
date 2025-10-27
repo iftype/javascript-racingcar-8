@@ -1,5 +1,5 @@
 class RacingValidator {
-  constructor(carValidator, roundsValidator) {
+  constructor({ carValidator, roundsValidator }) {
     this.carValidator = carValidator;
     this.roundsValidator = roundsValidator;
   }

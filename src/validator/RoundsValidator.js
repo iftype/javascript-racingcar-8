@@ -1,7 +1,7 @@
 import { ERROR_MESSAGES } from '../constants/messages.js';
 
 class RoundsValidator {
-  constructor(validator) {
+  constructor({ validator }) {
     this.validator = validator;
   }
 
@@ -18,7 +18,7 @@ class RoundsValidator {
   }
 
   positive(rounds) {
-    if (!this.validator.isPositive(rounds, 2)) {
+    if (!this.validator.isPositive(rounds)) {
       throw new Error(ERROR_MESSAGES.POSITIVE);
     }
   }

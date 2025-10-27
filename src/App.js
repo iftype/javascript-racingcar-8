@@ -18,18 +18,18 @@ class App {
   async run() {
     const inputView = new InputView();
     const outputView = new OutputView();
-    const racingView = new RacingView(inputView, outputView);
+    const racingView = new RacingView({ inputView, outputView });
 
     const validator = new Validator();
-    const carValidator = new CarValidator(validator);
-    const roundsValidator = new RoundsValidator(validator);
-    const racingValidator = new RacingValidator(carValidator, roundsValidator);
+    const carValidator = new CarValidator({ validator });
+    const roundsValidator = new RoundsValidator({ validator });
+    const racingValidator = new RacingValidator({ carValidator, roundsValidator });
 
     const strategy = new RandomMoveStrategy();
-    const carFactory = new CarFactory(strategy);
-    const racingService = new RacingService(carFactory, racingValidator, Race);
+    const carFactory = new CarFactory({ strategy });
+    const racingService = new RacingService({ carFactory, racingValidator, Race });
 
-    const racingController = new RacingController(racingService, racingView);
+    const racingController = new RacingController({ racingService, racingView });
 
     await racingController.start();
   }
