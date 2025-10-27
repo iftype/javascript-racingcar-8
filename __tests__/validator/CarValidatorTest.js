@@ -1,5 +1,5 @@
 import CarValidator from '../../src/validator/CarValidator.js';
-import ERROR_MESSAGES from '../../src/constants/errorMessages.js';
+import { ERROR_MESSAGES } from '../../src/constants/messages.js';
 
 describe('CarValidator 검사', () => {
   let mockValidator;

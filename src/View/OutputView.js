@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import INFO_MESSAGES from '../constants/infoMessages.js';
+import { INFO_MESSAGES } from '../constants/messages.js';
 
 class OutputView {
   logs(logs) {

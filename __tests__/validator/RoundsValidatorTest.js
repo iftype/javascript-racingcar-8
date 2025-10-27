@@ -1,5 +1,5 @@
 import RoundsValidator from '../../src/validator/RoundsValidator.js';
-import ERROR_MESSAGES from '../../src/constants/errorMessages.js';
+import { ERROR_MESSAGES } from '../../src/constants/messages.js';
 
 describe('RoundsValidator 검사', () => {
   let mockValidator;
