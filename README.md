@@ -97,10 +97,11 @@ jun : -----
 
 ---
 
+## 구현할 기능 목록
+
 <details>
 <summary>구현할 기능 목록</summary>
 
-## 구현할 기능 목록
 
 ### 입출력
 
@@ -286,6 +287,8 @@ class App {
 // RacingService.js
     const race = new this.Race(cars, rounds);
 ```
+Race를 제외한 모든 모듈이 최상위 계층에서 인스턴스를 생성하고 의존성을 주입합니다
+Race는 생성자를 프로퍼티로 넘겨 동적으로 생성할 수 있게 함에 따라 유연성을 갖추게 했습니다 
 
 
 ### 테스트
@@ -304,3 +307,17 @@ class App {
 
 
 
+### 덤 + 리팩토링 과정들
+
+<img width="1550" height="698" alt="캡처" src="https://github.com/user-attachments/assets/8f26ab6b-dea7-4130-8d34-f1bedc3f93df" />
+
+MVC 패턴을 도입할계획은 없었는데 `RacingGame` 이 점점 커져 가는 걸 보고 계층 분리를 시도하게 됐습니다.
+그 과정에서 의존성 주입을 시도하게 되었고, 상속으로 구조를 잡던 템플릿 메서드가 사라지고 레이싱 컨트롤러가 남았습니다.  
+중앙에서 에러 처리를 하는 예외팩토리는 유효성 검사의 가독성을 해쳐 삭제하게 되었습니다.
+
+
+--- 
+
+<img width="1037" height="522" alt="image" src="https://github.com/user-attachments/assets/5d3fe58e-337f-48b4-a6f8-b50c03396732" />
+
+이 방향으로 읽으시면 편하게 볼 수 있습니다
