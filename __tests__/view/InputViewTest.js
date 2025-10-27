@@ -1,6 +1,6 @@
 import InputView from '../../src/view/InputView';
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { TEST_INPUT_NAMES, TEST_NAMES, TEST_ROUNDS } from '../constants/MockData';
+import { TEST_INPUT_NAMES, TEST_NAMES, TEST_ROUNDS } from '../../src/constants/Mockdata.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();

@@ -5,7 +5,7 @@ import {
   TEST_ROUNDS,
   MOCK_RESULT_LOGS,
   MOCK_RESULT_WINNERS,
-} from '../constants/MockData';
+} from '../../src/constants/Mockdata.js';
 
 describe('RacingController 테스트', () => {
   let mockService;

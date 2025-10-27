@@ -4,7 +4,7 @@ import {
   TEST_ROUNDS,
   MOCK_CARS,
   MOCK_RACE_RESULT,
-} from '../constants/MockData.js';
+} from '../../src/constants/Mockdata.js';
 
 describe('RacingService 유닛테스트', () => {
   let mockFactory;
