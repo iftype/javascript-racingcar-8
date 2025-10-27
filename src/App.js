@@ -1,6 +1,6 @@
-import InputView from './view/InputView.js';
-import OutputView from './view/OutputView.js';
-import RacingView from './view/RacingView.js';
+import InputView from '../view/InputView.js';
+import OutputView from '../view/OutputView.js';
+import RacingView from '../view/RacingView.js';
 
 import Validator from './utils/Validator.js';
 import CarValidator from './validator/CarValidator.js';
