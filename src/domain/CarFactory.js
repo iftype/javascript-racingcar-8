@@ -1,12 +1,14 @@
 import Car from './Car.js';
 
 class CarFactory {
+  #strategy;
+
   constructor(strategy) {
-    this.strategy = strategy;
+    this.#strategy = strategy;
   }
 
   createCars(names) {
-    return names.map((name) => new Car(name, this.strategy));
+    return names.map((name) => new Car(name, this.#strategy));
   }
 }
 
