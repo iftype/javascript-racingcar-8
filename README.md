@@ -97,63 +97,65 @@ jun : -----
 
 ---
 
+<details>
+<summary>구현할 기능 목록</summary>
+
 ## 구현할 기능 목록
 
 ### 입출력
 
 #### 입력
 
-- 경주할 자동차 이름 입력
-- 시도할 횟수를 입력
+- [x] 경주할 자동차 이름 입력
+- [x] 시도할 횟수를 입력
 
 #### 출력
 
-- 차수별 실행 결과를 출력
-- 우승자 안내 문구를 출력
+- [x] 차수별 실행 결과를 출력
+- [x] 우승자 안내 문구를 출력
 
 ### 유효성 검사
 
 #### 경주할 자동차 유효성 검사
 
-- 공백인지 검사
-- 이름이 5자 이하인지 검사
-- 중복된 이름인지 검사
-- 한글,영어,숫자로 구성 되어있는지 검사
+- [x] 공백인지 검사
+- [x] 이름이 5자 이하인지 검사
+- [x] 중복된 이름인지 검사
+- [x] 한글,영어,숫자로 구성 되어있는지 검사
 
 #### 랩 유효성 검사
 
-- 공백인지 검사
-- 숫자인지 검사
-- 양의 정수인지 검사
+- [x] 공백인지 검사
+- [x] 숫자인지 검사
+- [x] 양의 정수인지 검사
 
 ### 패턴
 
 ### 에러 팩토리 패턴
 
-- 예외 메세지 관리
+- [x] 예외 메세지 관리
 
 #### 전략 패턴
 
-- 기본상태의 전략을 결정
-- 움직일 수 있는 전략을 결정
+- [x] 움직일 수 있는 전략을 결정
 
 #### 템플릿 메소드 패턴
 
-- 게임 구조를 정의
+- [ ] 게임 구조를 정의 -> 삭제
 
 #### 자동차 팩토리 패턴
 
-- 쉼표로 구분된 문자열에서 이름 구분
-- 이름과 전략을 받아 자동차 인스턴스를 생성
+- [x] 쉼표로 구분된 문자열에서 이름 구분
+- [x] 이름과 전략을 받아 자동차 인스턴스를 생성
 
 ### 게임 컨트롤
 
-- `0 ~ 9` 까지의 랜덤한 정수 생성
-- 우승자를 검사
+- [x] `0 ~ 9` 까지의 랜덤한 정수 생성
+- [x] 우승자를 검사
 
 ## 테스트
 
-- 각 기능별 테스트 추가
+- [x] 각 기능별 테스트 추가
 
 ---
 
@@ -165,7 +167,7 @@ jun : -----
 
 ### initGame
 
-1. 사용자에게 경주할 자동차 이름을 입력받음
+1. 사용자에게 경주할 자동차 이름을 입력받음 
 2. 입력받은 문자열로 차 생성 시작
 3. 문자열의 유효성 검사
 4. 쉼표 기준으로 나눈 문자열만큼 차 생성
@@ -186,21 +188,119 @@ jun : -----
 1. 이동거리로 우승자를 판별
 2. 우승자 출력
 
+</details>
+
 ---
 
-## 책임
 
-<img width="1289" height="399" alt="Image" src="https://github.com/user-attachments/assets/56768b6e-252b-4c51-93f6-af7abb12b7ce" />
+## 디자인 패턴
 
-`CanMoveStrategy`는 `Startegy`를 상속받아 움직일 수 있는 전략을 결정
+<img width="1745" height="653" alt="Image" src="https://github.com/user-attachments/assets/4b9b2df1-21d8-4329-a381-0f2896d83cda" />
 
-`CarValidator` 과 `LapValidator`는 `ExceptionFactory` 을 사용하여 에러메세지 객체 생성
+이번 2주차 과제에서 저는 2주 차의 정답지를 만들고 싶은 마음이 생겼습니다
+그래서 디자인 패턴에 온 힘을 다해서 오버엔지니어링을 했습니다
 
-`CarFactory` 는 `CanMoveStrategy`와 `CarValidator`를 이용하여 `Car` 하나를 생성
+지금 조건은 하나지만 새로운 요구사항이 올 것을 상정하여 확장은 열고 수정을 최소화 한 결과 제가 생각하는 정답의 구조가 탄생했습니다 
 
-`RacingGame`은 `GameTemplate`에게 구조를 받아 생성
-`RacingGame`은 `Input`를 사용해 입력
-`RacingGame`은 `CarFactory`를 사용해 자동차 생성 지시
-`RacingGame`은 `LapValidator`를 사용해 랩의 입력값 검증
-`RacingGame`은 `Random`를 사용해 랜덤한 값 사용
-`RacingGame`은 `Ouput`를 사용해 출력
+> 적용한 디자인 패턴은 아래와 같습니다
+
+
+
+### Dependency Injection, DI (의존성 주입)
+
+IoC를 위해 최상위 모듈에서 인스턴스를 생성
+
+```js
+class App {
+  async run() {
+    const inputView = new InputView();
+    const outputView = new OutputView();
+    const racingView = new RacingView(inputView, outputView);
+```
+- `racingView` 는 `inputView` 와 `outputView`의 기능을 위임받는 조합 객체
+```js
+    const validator = new Validator();
+    const carValidator = new CarValidator(validator);
+    const roundsValidator = new RoundsValidator(validator);
+    const racingValidator = new RacingValidator(carValidator, roundsValidator);
+```
+- 마찬가지로 `racingValidator` 는 `carValidator` 와 `roundsValidator`의 기능을 위임받는 조합 객체
+
+```js
+    const strategy = new RandomMoveStrategy();
+    const carFactory = new CarFactory(strategy);
+    const racingService = new RacingService(carFactory, racingValidator, Race);
+```
+- `racingService`는 차의 이동 조건 `strategy` 와 인스턴스를 생성해주는 `CarFactory`, 필요한 시점에 인스턴스를 생성하기 위해 `Race` 생성자의 의존성을 주입받음  
+
+```js
+    const racingController = new RacingController(racingService, racingView);
+    await racingController.start();
+  }
+}
+```
+- `racingController`는 `racingView`와 `Serivce`의 의존성을 주입받아, 프로세스 흐름을 관리하기 위함
+
+### Strategy Pattern (전략 패턴)
+
+새로운 이동 조건이 들어올 것을 상정하여 전략 패턴을 사용하였습니다
+
+```js
+class Car {
+   //...
+  move() {
+    if (this.#strategy.move()) 
+      this.#distance += MOVE_DISTANCE;
+  }
+  //...
+```
+자동차가 언제 움직일지를 최상위 계층(`App.js`)에서 결정하기 때문에 자동차 객체는 자신이 어떤 기준으로 움직이는지 알지 못합니다
+
+### Factory Pattern 팩토리 패턴
+
+```js
+class CarFactory {
+  constructor(strategy) {
+    this.strategy = strategy;
+  }
+  createCars(names) {
+    return names.map((name) => new Car(name, this.strategy));
+  }
+}
+```
+인스턴스의 생성을 캡슐화하여 객체 생성 로직을 분리했습니다
+
+일반적으로 팩토리패턴은 공유상태를 가지지 않고 수정을 막기위해 static으로 구현하지만 확장성을 늘리기위해 전략 프로퍼티를 주입받도록 전략 결정의 책임을 상위 계층으로 위임했습니다
+
+### 느슨한 결합(Loose Coupling)
+
+```js
+// App.js
+import Race from './domain/Race.js';
+class App {
+    //...
+    const racingService = new RacingService(carFactory, racingValidator, Race);
+    //...
+  }
+
+// RacingService.js
+    const race = new this.Race(cars, rounds);
+```
+
+
+### 테스트
+
+
+```js
+//RacingServiceTest.js
+  beforeEach(() => {
+    mockFactory = { createCars: jest.fn().mockReturnValue(MOCK_CARS) };
+    mockValidator = { validate: jest.fn() };
+    service = new RacingService(mockFactory, mockValidator, MockRaceClass);
+  });
+
+```
+의존성 주입 덕분에  Mock 객체들을 주입하여 테스트 객체가 의존하는 객체들에 영향을 받지않는 완전한 격리테스트가 가능해졌습니다
+
+
+
