@@ -4,12 +4,12 @@ class RacingController {
     this.racingView = racingView;
   }
 
-  async play() {
+  async start() {
     try {
-      const nameString = await this.racingView.inputCarNames();
+      const names = await this.racingView.inputCarNames();
       const rounds = await this.racingView.inputCounts();
 
-      const { logs, winners } = this.racingService.run(nameString, rounds);
+      const { logs, winners } = this.racingService.run(names, rounds);
       this.racingView.printLogs(logs);
       this.racingView.printWinners(winners);
     } catch (err) {

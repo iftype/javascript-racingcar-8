@@ -31,7 +31,7 @@ class App {
 
     const racingController = new RacingController(racingService, racingView);
 
-    await racingController.play();
+    await racingController.start();
   }
 }
 
