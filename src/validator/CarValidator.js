@@ -1,4 +1,5 @@
 import { ERROR_MESSAGES } from '../constants/messages.js';
+import { MAX_LENGTH } from '../constants/setting.js';
 
 class CarValidator {
   constructor(validator) {
@@ -12,7 +13,7 @@ class CarValidator {
   }
 
   length(name) {
-    if (this.validator.isLongerThan(name, 5)) {
+    if (this.validator.isLongerThan(name, MAX_LENGTH)) {
       throw new Error(ERROR_MESSAGES.LONG);
     }
   }

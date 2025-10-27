@@ -1,3 +1,4 @@
+import { MOVE_DISTANCE } from '../constants/setting.js';
 import MoveStrategy from './strategy/MoveStrategy.js';
 
 class Car {
@@ -15,7 +16,7 @@ class Car {
 
   move() {
     if (this.#strategy.move()) {
-      this.#distance += 1;
+      this.#distance += MOVE_DISTANCE;
       return true;
     }
     return false;
